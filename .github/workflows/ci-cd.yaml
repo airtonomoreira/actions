@@ -10,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        # If your package.json is in a subdirectory, specify it here.
-        # Otherwise, you can remove the `defaults` section.
-        working-directory: path/to/your/app
+        # Run all steps in the 'actions' subdirectory
+        working-directory: ./actions
 
     steps:
       - name: Checkout code
@@ -23,8 +22,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          # If using a subdirectory, point to the package-lock.json
-          cache-dependency-path: path/to/your/app/package-lock.json
+          # Point the cache to the package-lock.json in the subdirectory
+          cache-dependency-path: ./actions/package-lock.json
 
       - name: Install dependencies
         run: npm install
