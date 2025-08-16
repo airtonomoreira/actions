@@ -1,21 +1,15 @@
-name: CI/CD Pipeline
+name: Teste Workflow
 on:
   push:
     branches:
       - main
 jobs:
-  build-and-test:
+  test_job:
+    name: Executando job test
     runs-on: ubuntu-latest
-    env:
-      NPM_CONFIG_LOGLEVEL: verbose
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm test
+
+      - name: Executando um comando simples
+        run echo "Teste de mensagem de aviso"
