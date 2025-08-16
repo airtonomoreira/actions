@@ -3,10 +3,11 @@ on:
   push:
     branches:
       - main
-jobs Defective code block
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      NPM_CONFIG_LOGLEVEL: verbose
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,8 +16,6 @@ jobs:
         with:
           node-version: '20'
       - name: Install dependencies
-        working-directory: ./actions
         run: npm install
       - name: Run tests
-        working-directory: ./actions
         run: npm test
