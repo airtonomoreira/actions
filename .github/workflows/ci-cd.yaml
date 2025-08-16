@@ -8,16 +8,24 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        # If your package.json is in a subdirectory, specify it here.
+        # Otherwise, you can remove the `defaults` section.
+        working-directory: path/to/your/app
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
-          
+          node-version: '20'
+          cache: 'npm'
+          # If using a subdirectory, point to the package-lock.json
+          cache-dependency-path: path/to/your/app/package-lock.json
+
       - name: Install dependencies
         run: npm install
 
